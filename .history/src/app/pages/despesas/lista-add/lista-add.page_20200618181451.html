@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button>
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-back-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button [disabled]="!formLista.valid" (click)="onSave()">
+        <ion-icon name="checkmark-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>{{title}}</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [formGroup]="formLista">
+
+  <ion-grid>
+    <ion-row class="ion-justify-content-start">
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="floating">Descrição</ion-label>
+          <ion-input type="text" mode="md" formControlName="descricao"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="floating">Previsão de Gastos </ion-label>
+          <ion-input type="text" mode="md" formControlName="vlPrevisto"
+            [brmasker]="{money: true, thousand: '.',  decimalCaracter: ',', decimal: '2'}">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+</ion-content>

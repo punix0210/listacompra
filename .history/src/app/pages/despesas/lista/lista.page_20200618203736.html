@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Listas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label>Nome da Lista 1</ion-label>
+      <ion-icon slot="start" name="reorder-four-outline"></ion-icon>
+      <ion-button slot="end">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label>Nome da Lista 2</ion-label>
+      <ion-icon slot="start" name="reorder-four-outline"></ion-icon>
+      <ion-button slot="end">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Nome da Lista 3</ion-label>
+      <ion-icon slot="start" name="newspaper-outline"></ion-icon>
+      <ion-button slot="end">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+
+  </ion-list>
+
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="onCreate(0)" color="tertiary">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

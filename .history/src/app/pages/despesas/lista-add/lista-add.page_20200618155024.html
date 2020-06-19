@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button>
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-back-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button [disabled]="formLista.valid">
+        <ion-icon name="checkmark-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>{{title}}</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [formGroup]="formLista">
+
+  <ion-list lines="full">
+
+    <ion-item>
+      <ion-label position="stacked">Descrição <ion-text color="danger">*</ion-text>
+      </ion-label>
+      <ion-input type="text" mode="md" formControlName="descricao" type="text"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+
+</ion-content>

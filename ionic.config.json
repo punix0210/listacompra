@@ -1,0 +1,7 @@
+{
+  "name": "seguraobolso",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
