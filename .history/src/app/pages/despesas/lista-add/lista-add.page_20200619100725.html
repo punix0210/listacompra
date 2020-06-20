@@ -1,18 +1,32 @@
 <ion-header>
   <ion-toolbar color="primary">
-
+    
     <ion-buttons slot="start">
       <ion-back-button icon="chevron-back-outline">
+        <!-- <ion-icon name="chevron-back-outline"></ion-icon>         -->
+        <!-- <ion-icon name="arrow-back-outline"></ion-icon> -->
       </ion-back-button>
     </ion-buttons>
 
-    <ion-title>{{title}}</ion-title>
+    <!-- <ion-buttons slot="start">
+      <ion-button shape="round" size="large" router-direction="back" >
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>      -->
 
     <ion-buttons slot="end">
-      <ion-button size="large" shape="round" [disabled]="!formLista.valid" (click)="onSave()">
-        <ion-icon style="zoom:1.3;" name="checkmark-outline"></ion-icon>
+      <ion-button expand="full" shape="round" size="large" [disabled]="!formLista.valid" (click)="onSave()">
+        <ion-icon name="checkmark-outline"></ion-icon>
       </ion-button>
-    </ion-buttons>
+    </ion-buttons>    
+
+    <!-- <ion-buttons slot="end">
+      <ion-button [disabled]="!formLista.valid" (click)="onSave()">
+        <ion-icon name="checkmark-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons> -->
+
+    <ion-title>{{title}}</ion-title>
 
   </ion-toolbar>
 </ion-header>
@@ -28,7 +42,7 @@
 
     <ion-item>
       <ion-label position="floating">Previsão de Gastos </ion-label>
-      <ion-input type="text" formControlName="vlPrevisto"
+      <ion-input type="text"  formControlName="vlPrevisto"
         [brmasker]="{money: true, thousand: '.',  decimalCaracter: ',', decimal: '2'}">
       </ion-input>
     </ion-item>
@@ -51,7 +65,7 @@
       </ion-col>
     </ion-row>
   </ion-grid> -->
-
+  
   </form>
 
 </ion-content>

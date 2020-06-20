@@ -12,9 +12,7 @@ export class ListaItemsPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    setTimeout(() => {
-      this.ocultarTabs();
-    }, 500);
+    this.ocultarTabs();
   }
 
   onAdd() {

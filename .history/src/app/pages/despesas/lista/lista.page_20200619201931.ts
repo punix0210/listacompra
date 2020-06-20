@@ -11,10 +11,6 @@ export class ListaPage implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    console.log('init');
-    setTimeout(() => {
-      this.exibirTabs();
-    }, 300);
   }
 
   onCreate(idCompra) {
@@ -39,16 +35,6 @@ export class ListaPage implements OnInit {
     };
 
     this.router.navigate([`tabs/listas/compra/${idCompra}/items`], navigation);
-  }
-
-  exibirTabs() {
-    const elements = document.querySelectorAll('ion-tab-bar');
-    Object.keys(elements).map((key) => {
-      console.log(elements[key].style.display);
-      elements[key].style.display = 'flex';
-    });
-
-    console.log('entrou');
   }
 
 }

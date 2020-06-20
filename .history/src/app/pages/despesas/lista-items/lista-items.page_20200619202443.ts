@@ -12,21 +12,10 @@ export class ListaItemsPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    setTimeout(() => {
-      this.ocultarTabs();
-    }, 500);
   }
 
   onAdd() {
     console.log('Add');
-  }
-
-
-  ocultarTabs() {
-    const elements = document.querySelectorAll('ion-tab-bar');
-    Object.keys(elements).map((key) => {
-      elements[key].style.display = 'none';
-    });
   }
 
 }

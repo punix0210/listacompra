@@ -9,11 +9,11 @@ const routes: Routes = [
     component: ListaPage
   },
   {
-    path: 'compra/:id',
+    path: 'lista/:id',
     loadChildren: () => import('../lista-add/lista-add.module').then(m => m.ListaAddPageModule)
   },
   {
-    path: 'compra/:id/items',
+    path: 'items',
     loadChildren: () => import('../lista-items/lista-items.module').then(m => m.ListaItemsPageModule)
   }
 ];

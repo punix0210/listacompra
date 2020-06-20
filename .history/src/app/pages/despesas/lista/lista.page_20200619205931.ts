@@ -14,7 +14,7 @@ export class ListaPage implements OnInit {
     console.log('init');
     setTimeout(() => {
       this.exibirTabs();
-    }, 300);
+    });
   }
 
   onCreate(idCompra) {

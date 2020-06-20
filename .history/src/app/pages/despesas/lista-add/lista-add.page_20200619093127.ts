@@ -65,8 +65,8 @@ export class ListaAddPage implements OnInit {
       this.service.post(lista).subscribe((res) => {
         this.router.navigate(['tabs/lista']);
       }, err => {
-        console.log('error' + err);
         return;
+        console.log('error' + err);
       });
     } else {
       this.service.put(lista).subscribe((res) => {

@@ -12,9 +12,7 @@ export class ListaItemsPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    setTimeout(() => {
-      this.ocultarTabs();
-    }, 500);
+    this.ocultarTabs();
   }
 
   onAdd() {
@@ -23,7 +21,7 @@ export class ListaItemsPage implements OnInit {
 
 
   ocultarTabs() {
-    const elements = document.querySelectorAll('ion-tab-bar');
+    const elements = document.querySelectorAll('.tabbar');
     Object.keys(elements).map((key) => {
       elements[key].style.display = 'none';
     });
