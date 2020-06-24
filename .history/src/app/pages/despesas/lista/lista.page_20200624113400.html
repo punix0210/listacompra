@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Listas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-list>
+
+    <ion-item *ngFor="let lista of items">
+      <ion-label>
+        <h6>'Nome: '{{lista.descricao}}</h6>
+        <h5>{{lista.data}}</h5>
+      </ion-label>
+      <ion-button slot="start" (click)="onDelete(lista.id)">
+        <ion-icon name="reorder-four-outline"></ion-icon>
+      </ion-button>      
+      <ion-button slot="end" (click)="onCreateItems(lista.id)">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+
+
+    <!-- <ion-item>
+      <ion-label>Nome da Lista 2</ion-label>
+      <ion-icon slot="start" name="reorder-four-outline"></ion-icon>
+      <ion-button slot="end" (click)="onCreateItems(2)">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Nome da Lista 3</ion-label>
+      <ion-icon slot="start" name="newspaper-outline"></ion-icon>
+      <ion-button slot="end" (click)="onCreateItems(3)">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-button>
+    </ion-item> -->
+
+  </ion-list>
+
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="onCreate(0)" color="tertiary">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
