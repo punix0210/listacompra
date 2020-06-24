@@ -1,0 +1,146 @@
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Lista } from '../model/lista';
+import { HttpClient } from '@angular/common/http';
+import { DatabaseService } from './database.service';
+import { Response } from '../model/response';
+
+const endpoint = 'despesa';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ListaService {
+
+  constructor(private dbService: DatabaseService) { }
+
+  // findById(id): Observable<Lista> {
+  //   return this.http.get<Lista>(`${id}`);
+  // }
+
+  // post(lista: Lista) {
+  //   return this.http.post(`${endpoint}`, lista);
+  // }
+
+  // put(lista: Lista) {
+  //   return this.http.put(`${endpoint}`, lista);
+  // }
+
+  // delete(id) {
+  //   return this.http.delete(`${endpoint}?id=${id}`);
+  // }
+
+  async findAll(): Promise<Response> {
+
+    return new Promise(async (resolve) => {
+      try {
+        const items: Lista[] = [];
+        const conn = await this.dbService.getDB();
+        const resp = await conn.executeSql('Select * from ListaDespesa', []);
+
+        if (resp.rows.length > 0) {
+          let rows = resp.rows;
+          for (let i = 0; i < rows.length; i++) {
+            items.push({
+              id: rows.item(i).id,
+              descricao: rows.item(i).descricao,
+              data: rows.item(i).data,
+              vlPrevisto: rows.item(i).vlPrevisto
+            });
+          }
+        }
+        resolve({ success: true, data: items, error: false });
+      } catch (error) {
+        resolve({ success: false, data: error, error: true });
+      }
+    });
+
+  }
+
+  async save(lista: Lista) {
+    const conn = await this.dbService.getDB();
+    if (lista.id === 0) {
+      try {
+        const sql = 'insert into ListaDespesa (descricao, data, vlPrevisto) values (?, ?, ?)';
+        const data = [lista.descricao, lista.data, lista.vlPrevisto];
+        const teste = await conn.executeSql(sql, data);
+        console.log(teste);
+        return true;
+      } catch (error) {
+        console.log(error);
+        return false;
+      }
+
+    } else {
+      try {
+        const sql = 'update ListaDespesa set descricao=? data=? vlPrevisto=? Where id=?';
+        const data = [lista.descricao, lista.data, lista.vlPrevisto, lista.id];
+        const teste = await conn.executeSql(sql, data);
+        console.log(teste);
+        return true;
+      } catch (error) {
+        console.log(error);
+        return false;
+      }
+
+    }
+
+  }
+
+  async findById(id) {
+    const conn = await this.dbService.getDB();
+    try {
+      const sql = 'Select * from ListaDespesa Where id=?';
+      const data = [id];
+      const resp = await conn.executeSql(sql, data);
+
+      if (resp.rows.length > 0) {
+        const item = resp.rows.item(0);
+        const lista = new Lista();
+
+        lista.id = item.id;
+        lista.descricao = item.descricao;
+        lista.data = item.data;
+        lista.vlPrevisto = item.vlPrevisto;
+
+        return lista;
+      }
+
+      return null;
+
+    } catch (error) {
+      console.log(error);
+    }
+
+  }
+
+
+}
+
+
+
+// try {
+
+
+
+//   const resp = await conn.executeSql('Select * from ListaDespesa', []).then((res) => {
+
+//     const items: Lista[] = [];
+
+//     if (res.rows.length > 0) {
+
+//       for (let i = 0; i < res.rows.length; i++) {
+//         items.push({
+//           id: res.rows.item(i).id,
+//           descricao: res.rows.item(i).descricao,
+//           data: res.rows.item(i).data,
+//           vlPrevisto: res.rows.item(i).vlPrevisto
+//         });
+//       }
+//     }
+//     return items;
+//   });
+//   return resp;
+// } catch (error) {
+//   console.log(error);
+// }
